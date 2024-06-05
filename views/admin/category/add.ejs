@@ -1,0 +1,29 @@
+<%- include('../layout/header') %>
+<div class="app-wrapper">
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">			    
+            <h1 class="app-page-title">Add Article</h1>
+            <hr class="mb-4">
+            <div class="row g-4 settings-section">
+                <div class="col-12 col-md-8">
+                    <div class="app-card app-card-settings shadow-sm p-4">
+                        <div class="app-card-body">
+                            <form class="settings-form" action="/admin/category/store" method="POST" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <label for="image" class="form-label">Image</label>
+                                    <input type="file" class="form-control" id="image" name="image" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Category Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                </div>
+                                <button type="submit" class="btn app-btn-primary" >Save Changes</button>
+                            </form>
+                        </div><!--//app-card-body-->
+                        
+                    </div><!--//app-card-->
+                </div>
+            </div><!--//row-->
+        </div><!--//container-fluid-->
+    </div><!--//app-content-->
+    <%- include('../layout/footer') %>
