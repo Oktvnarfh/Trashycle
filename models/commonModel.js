@@ -36,6 +36,23 @@ class CommonModel {
     const query = `DELETE FROM ${this.tableName} WHERE id = ?`;
     db.query(query, [id], callback);
   }
+
+   // Get record by username
+   getByUsername(username, callback) {
+    const query = `SELECT * FROM ${this.tableName} WHERE username = ?`;
+    db.query(query, [username], callback);
+  }
+
+  getLocationsWithDetails(callback) {
+    const query = `
+        SELECT l.*, c.name AS category_name, s.day, s.open_time, s.close_time
+        FROM locations l
+        LEFT JOIN category c ON l.category_id = c.id
+        LEFT JOIN location_schedules s ON l.id = s.location_id
+        ORDER BY l.id, s.day;
+    `;
+    db.query(query, callback);
+  }
 }
 
 module.exports = CommonModel;

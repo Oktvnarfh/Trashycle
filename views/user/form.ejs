@@ -1,0 +1,149 @@
+<%- include('layout/header') %>
+<div class="main">
+    <div class="container wrapper py-5">
+        <form method="POST" id="signup-form" class="signup-form" action="/submit-form" enctype="multipart/form-data">
+            <div>
+                <h3>Personal info</h3>
+                <fieldset>
+                    <h2>Informasi Lokasi</h2>
+                    <p class="desc">Please enter your infomation and proceed to next step so we can build your account</p>
+                    <div class="fieldset-content">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Nama Lokasi</label>
+                            <input type="text" name="name" id="name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="form-label">Alamat</label>
+                            <input type="text" name="address" id="address" />
+                        </div>
+                        <div class="form-group">
+                            <label for="province" class="form-label">Provinsi</label>
+                            <input type="text" name="province" id="province" />
+                        </div>
+                        <div class="form-group">
+                            <label for="city" class="form-label">City</label>
+                            <input type="text" name="city" id="city" />
+                        </div>
+                        <div class="form-group">
+                            <label for="postcode" class="form-label">Kode Pos</label>
+                            <input type="text" name="postcode" id="postcode" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" name="email" id="email" />
+                            <span class="text-input">Example  :<span>  Jeff@gmail.com</span></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone</label>
+                            <input type="text" name="phone" id="phone" />
+                        </div>
+                    </div>
+                </fieldset>
+    
+                <h3>Unggah Gambar Lokasi</h3>
+                <fieldset>
+                    <h2>Unggah Gambar Lokasi</h2>
+                    <p class="desc">Unggah gambar lokasi drop off Anda untuk membantu kami memverifikasi dan menampilkan lokasi Anda dengan akurat.</p>
+                    <div class="fieldset-content">
+                        <section>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="preview-zone hidden">
+                                                <div class="box box-solid">
+                                                    <div class="box-header with-border">
+                                                        <div><b>Preview</b></div>
+                                                        <div class="box-tools pull-right">
+                                                            <button type="button" class="btn btn-danger btn-sm remove-preview">
+                                                                Reset This Form
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="box-body"></div>
+                                                </div>
+                                            </div>
+                                            <div class="dropzone-wrapper">
+                                                <div class="dropzone-desc">
+                                                    <i class="glyphicon glyphicon-download-alt"></i>
+                                                    <p>Choose image files or drag them here.</p>
+                                                </div>
+                                                <input type="file" name="img_logo" class="dropzone" accept="image/*">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </fieldset>
+
+                <h3>Pilih Jenis Sampah</h3>
+                <fieldset>
+                    <h2>Pilih Jenis Sampah</h2>
+                    <p class="desc">Pilih jenis sampah yang akan ditampung di tempat drop off Anda</p>
+                    <div class="fieldset-content">
+                        <div class="choose-bank">
+                            <div class="row py-5" id="cardContainer">
+                                <% data.forEach((category, index) => { %>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="card text-center p-4 mb-2 crd" data-category-id="<%= category.id %>">
+                                            <img src="/uploads/<%= category.image %>" width="75" alt="Service" />
+                                            <h4 class="mt-3"><%= category.name %></h4>
+                                        </div>
+                                    </div>
+                                <% }); %>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Hidden input to store selected categories -->
+                    <input type="hidden" id="selectedCategories" name="selectedCategories" value="">
+                </fieldset>
+
+                <h3>Jadwal Operasional</h3>
+                <fieldset>
+                    <h2>Pilih Jadwal Operasional</h2>
+                    <p class="desc">Masukkan jadwal buka drop off Anda sehingga kami dapat memproses detailnya dengan benar.</p>
+                    <div class="fieldset-content">
+                        <section>
+                            <div class="select-menu">
+                                <div class="faq_area section_padding_130" id="faq">
+                                    <div class="row justify-content-start">
+                                        <div class="col-12 col-sm-10 col-lg-8">
+                                            <div class="accordion faq-accordian" id="faqAccordion">
+                                                <% 
+                                                    const days = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"];
+                                                    days.forEach((day, index) => {
+                                                    const dayId = day.toLowerCase();
+                                                %>
+                                                <div class="card border-0 wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                                                    <div class="card-header d-flex align-items-center" id="heading<%= dayId %>">
+                                                        <input class="form-check-input ms-3" type="checkbox" id="<%= dayId %>" name="schedule_day" value="<%= dayId %>">
+                                                        <h6 class="mb-0 collapsed" data-bs-toggle="collapse" data-bs-target="#collapse<%= dayId %>" aria-expanded="true" aria-controls="collapse<%= dayId %>">
+                                                            <%= day %>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="collapse" id="collapse<%= dayId %>" aria-labelledby="heading<%= dayId %>" data-bs-parent="#faqAccordion">
+                                                        <div class="card-body">
+                                                            <label for="open_time_<%= dayId %>">Waktu Buka</label>
+                                                            <input type="time" id="open_time_<%= dayId %>" name="open_time_<%= dayId %>">
+                                                            <label for="close_time_<%= dayId %>">Waktu Tutup</label>
+                                                            <input type="time" id="close_time_<%= dayId %>" name="close_time_<%= dayId %>">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <% }); %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include('layout/footer') %>
