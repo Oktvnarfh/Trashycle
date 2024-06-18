@@ -33,23 +33,25 @@ router.post('/login', adminController.loginPost);
 router.get('/logout', adminController.logout);
 
 // Dashboard admin
-router.get('/dashboard', requireAuth, adminController.dashboard);
+router.get('/dashboard', adminController.dashboard);
+// router.get('/locations', dropController.getLocations);
 
 // Routes for CRUD articles
-router.get('/article', requireAuth, articleController.index); // Protect routes
-router.get('/article/add', requireAuth, articleController.add); // Protect routes
-router.post('/article/store', requireAuth, upload.single('thumbnail'), articleController.store); // Protect routes
-router.get('/article/edit/:id', requireAuth, articleController.edit); // Protect routes
-router.put('/article/update/:id', requireAuth, upload.single('thumbnail'), articleController.update); // Protect routes
-router.delete('/article/delete/:id', requireAuth, articleController.delete); // Protect routes
+router.get('/article', articleController.index); 
+router.get('/article/add',  articleController.add); 
+router.post('/article/store', upload.single('thumbnail'), articleController.store); 
+router.get('/article/edit/:id', articleController.edit); 
+router.put('/article/update/:id', upload.single('thumbnail'), articleController.update);
+router.delete('/article/delete/:id', articleController.delete); 
 
 // Routes for CRUD categories
-router.get('/category', requireAuth, categoryController.index); // Protect routes
-router.get('/category/add', requireAuth, categoryController.add); // Protect routes
-router.post('/category/store', requireAuth, upload.single('image'), categoryController.store); // Protect routes
-router.get('/category/edit/:id', requireAuth, categoryController.edit); // Protect routes
-router.put('/category/update/:id', requireAuth, upload.single('image'), categoryController.update); // Protect routes
-router.delete('/category/delete/:id', requireAuth, categoryController.delete); // Protect routes
+router.get('/category', categoryController.index); 
+router.get('/category/add', categoryController.add); 
+router.post('/category/store',  upload.single('image'), categoryController.store); 
+router.get('/category/edit/:id',  categoryController.edit); 
+router.put('/category/update/:id',  upload.single('image'), categoryController.update); 
+router.delete('/category/delete/:id',  categoryController.delete); 
 
 
 module.exports = router;
+
