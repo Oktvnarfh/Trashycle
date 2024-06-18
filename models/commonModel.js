@@ -20,10 +20,22 @@ class CommonModel {
   }
 
   // Create a new record
-  create(data, callback) {
-    const query = `INSERT INTO ${this.tableName} SET ?`;
-    db.query(query, data, callback);
-  }
+  // create(data, callback) {
+  //   const query = `INSERT INTO ${this.tableName} SET ?`;
+  //   db.query(query, data, callback);
+  // }
+  create(data) {
+    return new Promise((resolve, reject) => {
+        const query = `INSERT INTO ${this.tableName} SET ?`;
+        db.query(query, data, (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result.insertId); // Return the inserted ID
+            }
+        });
+    });
+}
 
   // Update a record by ID
   update(id, data, callback) {
@@ -43,16 +55,17 @@ class CommonModel {
     db.query(query, [username], callback);
   }
 
-  getLocationsWithDetails(callback) {
+  getLocationWithDetails(id, callback) {
     const query = `
-        SELECT l.*, c.name AS category_name, s.day, s.open_time, s.close_time
+        SELECT l.*, c.name as category_name, s.day, s.open_time, s.close_time
         FROM locations l
-        LEFT JOIN category c ON l.category_id = c.id
+        LEFT JOIN location_categories lc ON l.id = lc.location_id
+        LEFT JOIN category c ON lc.category_id = c.id
         LEFT JOIN location_schedules s ON l.id = s.location_id
-        ORDER BY l.id, s.day;
-    `;
-    db.query(query, callback);
-  }
+        WHERE l.id = ?`;
+
+    db.query(query, [id], callback);
+}
 }
 
 module.exports = CommonModel;

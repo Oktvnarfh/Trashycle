@@ -1,0 +1,169 @@
+<%- include('layout/header') %>
+<!-- Projects -->
+<div id="projects" class="cards-2">
+    <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+        <h1 class="display-5 mb-3">Panduan Daur Ulang</h1>
+      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="h2-heading">Organik</h2>
+            </div> <!-- end of col -->
+        </div> <!-- end of row -->
+        <div class="row">
+            <% for (const item of panduan.organik) { %>
+                <!-- Card -->
+                    <div class="col-lg-3 col-sm-6 mb-4">
+                        <a href="/home/tips/<%= item.id %>">
+                            <div class="card">
+                                <img class="img-fluid rounded-2" src="<%= item.image %>" alt="<%= item.name %>" width="400">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center"><%= item.name %></h5>
+                                    <!-- <p class="card-text">Your description goes here...</p> -->
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                  <!-- end of card -->
+            <% }; %>
+        </div> <!-- end of row -->
+    </div> <!-- end of container -->
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="h2-heading">Anorganik</h2>
+            </div> <!-- end of col -->
+        </div> <!-- end of row -->
+        <div class="row">
+                <!-- Card -->
+                <div class="col-lg-3 col-sm-6 mb-6">
+                    <img class="img-fluid" src="/images/project/project-1.jpg" alt="alternative">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Koran</h5>
+                        <!-- <p class="card-text">Suffer should if waited common person little ans words are needed oh <a class="blue no-line" href="article.html">...Read more</a></p> -->
+                    </div>
+                </div>
+                <!-- end of card -->
+
+                <!-- Card -->
+                <div class="col-lg-3 col-sm-6 mb-4">
+                    <img class="img-fluid" src="/images/project/project-2.jpg" alt="alternative">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Buku Bekas</h5>
+                        <!-- <p class="card-text">In to am attended desirous raptures declared diverted confined at collected <a class="blue no-line" href="article.html">...Read more</a></p> -->
+                    </div>
+                </div>
+                <!-- end of card -->
+
+                <!-- Card -->
+                <div class="col-lg-3 col-sm-6 mb-6">
+                    <img class="img-fluid" src="/images/project/project-3.jpg" alt="alternative">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Kertas HVS</h5>
+                        <!-- <p class="card-text">Instantly remaining up certainly to necessary as over walk dull into son <a class="blue no-line" href="article.html">...Read more</a></p> -->
+                    </div>
+                </div>
+                <!-- end of card -->
+
+                <!-- Card -->
+                <div class="col-lg-3 col-sm-6 mb-6">
+                    <img class="img-fluid" src="/images/project/project-4.jpg" alt="alternative">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Kertas Buram</h5>
+                        <!-- <p class="card-text">Vent new at or happiness commanded daughters as is handsome an <a class="blue no-line" href="article.html">...Read more</a></p> -->
+                    </div>
+                </div>
+                <!-- end of card -->
+
+                <!-- Card -->
+                <div class="col-lg-3 col-sm-6 mb-6">
+                    <img class="img-fluid" src="/images/project/project-5.jpg" alt="alternative">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Karton</h5>
+                        <!-- <p class="card-text">Vicinity subjects more words into miss on he over been late pain an only <a class="blue no-line" href="article.html">...Read more</a></p> -->
+                    </div>
+                </div>
+                <!-- end of card -->
+
+                <!-- Card -->
+                <div class="col-lg-3 col-sm-6 mb-6">
+                    <img class="img-fluid" src="/images/project/project-6.jpg" alt="alternative">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Kertas Warna</h5>
+                        <!-- <p class="card-text">Match round scale now sex style far times your me past and who now much <a class="blue no-line" href="article.html">...Read more</a></p> -->
+                    </div>
+                </div>
+                <!-- end of card -->
+        </div> <!-- end of row -->
+    </div> <!-- end of container -->
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="h2-heading">B3</h2>
+            </div> <!-- end of col -->
+        </div> <!-- end of row -->
+        <div class="row">
+                <!-- Card -->
+                <div class="col-lg-3 col-sm-6 mb-6">
+                    <img class="img-fluid" src="/images/project/project-1.jpg" alt="alternative">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Koran</h5>
+                        <!-- <p class="card-text">Suffer should if waited common person little ans words are needed oh <a class="blue no-line" href="article.html">...Read more</a></p> -->
+                    </div>
+                </div>
+                <!-- end of card -->
+
+                <!-- Card -->
+                <div class="col-lg-3 col-sm-6 mb-4">
+                    <img class="img-fluid" src="/images/project/project-2.jpg" alt="alternative">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Buku Bekas</h5>
+                        <!-- <p class="card-text">In to am attended desirous raptures declared diverted confined at collected <a class="blue no-line" href="article.html">...Read more</a></p> -->
+                    </div>
+                </div>
+                <!-- end of card -->
+
+                <!-- Card -->
+                <div class="col-lg-3 col-sm-6 mb-6">
+                    <img class="img-fluid" src="/images/project/project-3.jpg" alt="alternative">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Kertas HVS</h5>
+                        <!-- <p class="card-text">Instantly remaining up certainly to necessary as over walk dull into son <a class="blue no-line" href="article.html">...Read more</a></p> -->
+                    </div>
+                </div>
+                <!-- end of card -->
+
+                <!-- Card -->
+                <div class="col-lg-3 col-sm-6 mb-6">
+                    <img class="img-fluid" src="/images/project/project-4.jpg" alt="alternative">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Kertas Buram</h5>
+                        <!-- <p class="card-text">Vent new at or happiness commanded daughters as is handsome an <a class="blue no-line" href="article.html">...Read more</a></p> -->
+                    </div>
+                </div>
+                <!-- end of card -->
+
+                <!-- Card -->
+                <div class="col-lg-3 col-sm-6 mb-6">
+                    <img class="img-fluid" src="/images/project/project-5.jpg" alt="alternative">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Karton</h5>
+                        <!-- <p class="card-text">Vicinity subjects more words into miss on he over been late pain an only <a class="blue no-line" href="article.html">...Read more</a></p> -->
+                    </div>
+                </div>
+                <!-- end of card -->
+
+                <!-- Card -->
+                <div class="col-lg-3 col-sm-6 mb-6">
+                    <img class="img-fluid" src="/images/project/project-6.jpg" alt="alternative">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Kertas Warna</h5>
+                        <!-- <p class="card-text">Match round scale now sex style far times your me past and who now much <a class="blue no-line" href="article.html">...Read more</a></p> -->
+                    </div>
+                </div>
+                <!-- end of card -->
+        </div> <!-- end of row -->
+    </div> <!-- end of container -->
+</div> <!-- end of cards-2 -->
+<!-- end of projects -->
+<%- include('layout/footer') %>

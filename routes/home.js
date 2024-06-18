@@ -6,16 +6,16 @@ const userController = require('../controllers/userController');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads/') // Ganti dengan direktori penyimpanan file Anda
+        cb(null, 'public/uploads/user');
     },
     filename: function (req, file, cb) {
-        cb(null, file.originalname)
+        cb(null, file.originalname);
     }
 });
 
 const upload = multer({
     storage: storage,
-    limits: { fileSize: 1024 * 1024 * 10 } // Batas ukuran file dalam byte (contoh: 10MB)
+    limits: { fileSize: 1024 * 1024 * 10 }
 });
 
 // Dashboard user
@@ -30,8 +30,11 @@ router.get('/login', userController.login);
 // Gunakan middleware upload untuk route POST '/submit-form'
 router.get('/form', userController.form);
 router.post('/submit-form', upload.single('img_logo'), userController.submitForm);
-router.get('/detail', userController.detail);
-router.get('/drop-detail', userController.dropOffDetail);
+router.get('/detail/:id', userController.detail);
+router.get('/drop-detail/:id', userController.dropOffDetail);
+router.get('/find-drop-off', userController.findDropOff);
+router.get('/panduan', userController.panduan);
+router.get('/tips/:id', userController.tips);
 // router.get('/register', userController.register);
 
 module.exports = router;
