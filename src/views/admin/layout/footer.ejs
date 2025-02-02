@@ -1,0 +1,55 @@
+<footer class="app-footer">
+    <div class="container text-center py-3">
+         <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+    <small class="copyright">Trashycle</small>
+       
+    </div>
+</footer><!--//app-footer-->
+
+</div><!--//app-wrapper-->    					
+
+
+<!-- Javascript -->          
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Ensure jQuery is loaded first -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script> <!-- jQuery Validate -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-steps/1.1.0/jquery.steps.min.js"></script> <!-- jQuery Steps -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.js"></script> <!-- noUiSlider -->
+<!-- <script src="/javascripts/main.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const lineChartData = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr'], // Sesuaikan dengan data periode
+        datasets: [{
+            label: 'Pendapatan',
+            data: [1000, 1200, 1500, 1700], // Ganti dengan data dinamis
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    };
+
+    const barChartData = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr'], // Sesuaikan dengan data periode
+        datasets: [{
+            label: 'Sampah (Kg)',
+            data: [200, 250, 300, 400], // Ganti dengan data dinamis
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+        }]
+    };
+
+    new Chart(document.getElementById('canvas-linechart'), {
+        type: 'line',
+        data: lineChartData,
+    });
+
+    new Chart(document.getElementById('canvas-barchart'), {
+        type: 'bar',
+        data: barChartData,
+    });
+</script>
+    
+</body>
+</html> 

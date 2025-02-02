@@ -1,0 +1,364 @@
+<%- include('layout/header') %>
+<main class="main">
+  <div class="col-auto">
+    <% if (messages.error) { %>
+      <div class="alert alert-danger bubble-notification"><%= messages.error %></div>
+    <% } %>
+    <% if (messages.success) { %>
+      <div class="alert alert-success bubble-notification"><%= messages.success %></div>
+    <% } %>
+  </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section light-background">
+        <div class="container">
+          <div class="row gy-4">
+            <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
+              <h1>Ubah Sampah Jadi Berkah</h1>
+              <p>Bergabunglah dengan EcoAnggrek, mitra terpercaya Anda dalam daur ulang dan keberlanjutan. Bersama, kita ciptakan lingkungan yang lebih hijau untuk masa depan.</p>
+              <div class="d-flex">
+                <a href="/home/form" class="btn-get-started">Kirim Sampah</a>
+                <a href="/home/education-video" class="btn btn-link btn-watch-video d-flex align-items-center glightbox"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </section><!-- /Hero Section -->
+      <!-- Stats Section -->
+      <% if (typeof stats !== 'undefined') { %>
+        <section id="stats" class="stats section bg-light">
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                <div class="row gy-4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stats-item">
+                            <i class="bi bi-trash"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="<%= stats.totalSampah %>" data-purecounter-duration="1" class="purecounter"></span>
+                            <p><strong>Total Sampah</strong><br><span>(dalam Kg)</span></p>
+                        </div>
+                    </div>
+    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stats-item">
+                            <i class="bi bi-journal-richtext"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="<%= stats.totalTransaksi %>" data-purecounter-duration="1" class="purecounter"></span>
+                            <p><strong>Transaksi</strong><br><span>(hingga saat ini)</span></p>
+                        </div>
+                    </div>
+    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stats-item">
+                            <i class="bi bi-people"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="<%= stats.totalUsers %>" data-purecounter-duration="1" class="purecounter"></span>
+                            <p><strong>Pengguna Aktif</strong><br><span>(hingga saat ini)</span></p>
+                        </div>
+                    </div>
+    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stats-item">
+                            <i class="bi bi-award"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="<%= stats.totalPenghargaan %>" data-purecounter-duration="1" class="purecounter"></span>
+                            <p><strong>Penghargaan</strong><br><span>(hingga saat ini)</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <% } else { %>
+        <p>Data statistik tidak tersedia.</p>
+    <% } %><!-- /Stats Section -->
+
+    <section id="about" class="about">
+      <div class="container-xxl" style="margin-top: 100px;">
+          <div class="container">
+              <div class="row  align-items-center">
+                  <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                      <div class="about-img position-relative overflow-hidden p-5 pe-0 text-center">
+                          <img class="img-fluid w-50" src="../images/about.png">
+                      </div>
+                  </div>
+                  <div class="col-lg-5" data-aos="fade-down" data-aos-delay="200">
+                    <h2>Jadilah Bagian dari Solusi!</h2>
+                      <p class="mb-3">
+                        Mari bersama-sama menjaga kelestarian lingkungan dengan mengelola sampah secara bijak. EcoAnggrek hadir sebagai solusi Anda untuk mengubah sampah menjadi nilai berharga melalui langkah-langkah sederhana dan ramah lingkungan. Bersama, kita wujudkan masa depan yang lebih hijau!.
+                      </p>
+                      <a href="/home/form" class="btn-get-started">Kirim Sampah</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  
+      <!-- Featured Services Section -->
+      <section id="featured-services" class="featured-services section" style="margin-top: 100px;">
+  
+        <div class="container">
+          <div class="col text-center section-title">
+            <h2 class="fw-bold">Layanan</h2>
+            <p class="lead">Layanan Kami</p>
+          </div>
+  
+          <div class="row gy-4">
+  
+            <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+              <div class="service-item position-relative">
+                <div class="icon"><i class="bi bi-trash icon"></i></div>
+                <h4><a href="" class="stretched-link">Pengelolaan Sampah Terpadu</a></h4>
+                <p>Layanan pengelolaan sampah mulai dari pemilahan hingga daur ulang yang efektif dan ramah lingkungan.</p>
+              </div>
+            </div><!-- End Service Item -->
+  
+            <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+              <div class="service-item position-relative">
+                <div class="icon"><i class="bi bi-book icon"></i></div>
+                <h4><a href="" class="stretched-link">Pendidikan dan Sosialisasi</a></h4>
+                <p>Memberikan pelatihan dan informasi kepada masyarakat tentang pentingnya pengelolaan sampah secara benar dan berdampak positif.</p>
+              </div>
+            </div><!-- End Service Item -->
+  
+            <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+              <div class="service-item position-relative">
+                <div class="icon"><i class="bi bi-recycle icon"></i></div>
+                <h4><a href="" class="stretched-link">Sampah Menjadi Produk Bernilai</a></h4>
+                <p>Mendorong sampah yang terkumpul untuk diubah menjadi barang bernilai, seperti kompos, produk daur ulang, atau bahan baku untuk usaha lokal.</p>
+              </div>
+            </div><!-- End Service Item -->
+  
+            <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+              <div class="service-item position-relative">
+                <div class="icon"><i class="bi bi-truck icon"></i></div>
+                <h4><a href="" class="stretched-link">Layanan Jemput Sampah</a></h4>
+                <p>Kami menyediakan layanan jemput sampah untuk mempermudah Anda dalam mengelola sampah tanpa harus repot datang ke lokasi.</p>
+              </div>
+            </div><!-- End Service Item -->
+  
+          </div>
+  
+        </div>
+  
+      </section><!-- /Featured Services Section -->
+
+      <!-- Mengapa Memilih EcoAnggrek Section -->
+    <section id="why-choose-us" class="why-choose-us section py-5 bg-light" style="margin-top: 80px;">
+      <div class="container">
+          <div class="row justify-content-center text-center ">
+              <div class="col text-center section-title">
+                <h2 class="fw-bold">Tentang</h2>
+                <p class="lead">Mengapa Memilih EcoAnggrek?</p>
+              </div>
+          </div>
+          <div class="row g-4 text-center">
+              <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                  <div class="card shadow-lg border-0 rounded-4 py-2">
+                      <div class="card-body ">
+                        <div class="py-4">
+                          <i class="bi bi-recycle display-4"></i>
+                        </div>
+                          <h5 class="card-title">Dampak Lingkungan</h5>
+                          <p class="card-text">Kami membantu mengurangi sampah di tempat pembuangan akhir dan mempromosikan daur ulang untuk menciptakan planet yang lebih bersih.</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="300">
+                  <div class="card shadow-lg border-0 rounded-4 py-2">
+                      <div class="card-body">
+                        <div class="py-4">
+                          <i class="bi bi-check-circle display-4"></i>
+                        </div>
+                          <h5 class="card-title">Kemudahan</h5>
+                          <p class="card-text">Dengan layanan yang mudah digunakan, Anda dapat mengirimkan sampah Anda langsung ke kami hanya dengan beberapa klik.</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="400">
+                  <div class="card shadow-lg border-0 rounded-4 py-2">
+                      <div class="card-body">
+                        <div class="py-4">
+                          <i class="bi bi-person-check display-4"></i>
+                        </div> 
+                          <h5 class="card-title">Kemitraan Terpercaya</h5>
+                          <p class="card-text">Kami bekerja sama dengan komunitas lokal, organisasi, dan perusahaan untuk memastikan tingkat layanan dan keberlanjutan yang tinggi.</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section><!-- /Mengapa Memilih EcoAnggrek Section -->
+
+      <!-- Featured Steps Section -->
+       <section id="featured-steps" class="featured-steps section" style="margin-top: 80px;">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+          <div class="col text-center section-title">
+            <h2 class="fw-bold">Panduan</h2>
+            <p class="lead">Cara Mengikuti</p>
+          </div>
+            <div class="row stepper-row">
+                <div class="col-lg-3 stepper-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-circle">
+                      <i class="bi bi-box-seam"></i>
+                    </div>
+                    <h3 class="step-title">Pilah dan Kemas</h3>
+                    <p class="step-description">Pilah dan pastikan sampah dalam keadaan bersih dan kering. Kemas sampah dengan baik dan aman.</p>
+                  </div>
+                <div class="col-lg-3 stepper-item" data-aos="fade-up" data-aos-delay="200">
+                  <div class="step-circle">
+                    <i class="bi bi-cash-coin"></i>
+                  </div>
+                  <h3 class="step-title">Buat Transaksi</h3>
+                  <p class="step-description">Buat transaksi pada website sebelum Anda menyetorkan sampah. Cantumkan No Rekening pada paket.</p>
+                </div>
+                <div class="col-lg-3 stepper-item" data-aos="fade-up" data-aos-delay="300">
+                  <div class="step-circle">
+                    <i class="bi bi-truck"></i>
+                  </div>
+                  <h3 class="step-title">Kirim Sampah</h3>
+                  <p class="step-description">Kirimkan sampah melalui ekspedisi atau datang langsung ke lokasi Bank Sampah Anggrek.</p>
+                </div>
+                <div class="col-lg-3 stepper-item" data-aos="fade-up" data-aos-delay="400">
+                  <div class="step-circle">
+                    <i class="bi bi-recycle"></i>
+                  </div>
+                  <h3 class="step-title">Sampah Terkelola</h3>
+                  <p class="step-description">Sampah yang telah sampai akan dikelola secara bertanggung jawab oleh Bank Sampah Anggrek.</p>
+                </div>
+              </div>
+        </div>
+       </section>
+      <!-- Featured Steps Section -->
+
+
+      <!-- Features 2 Section -->
+    <section id="features-2" class="features-2 section" style="margin-top: 80px; background-color: #f9f9f9;">
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="col text-center section-title">
+              <p class="lead">Cara Menyiapkan Sampah</p>
+            </div>
+  
+          <div class="row align-items-center">
+  
+            <div class="col-lg-4">
+  
+              <div class="feature-item text-end mb-5" data-aos="fade-right" data-aos-delay="200">
+                <div class="d-flex align-items-center justify-content-end gap-4">
+                  <div class="feature-content">
+                    <h3>Bersihkan Sampah</h3>
+                    <p>Pastikan sampah yang akan dikirim dalam keadaan bersih guna menghindari penyebaran kuman.</p>
+                  </div>
+                  <div class="feature-icon flex-shrink-0">
+                    <i class="bi bi-1-square"></i>
+                  </div>
+                </div>
+              </div><!-- End .feature-item -->
+  
+              <div class="feature-item text-end mb-5" data-aos="fade-right" data-aos-delay="300">
+                <div class="d-flex align-items-center justify-content-end gap-4">
+                  <div class="feature-content">
+                    <h3>Pastikan Sampah Kering</h3>
+                    <p>Sampah yang akan dikirimkan harus dalam keadaan kering, tidak basah, atau pun lembab.</p>
+                  </div>
+                  <div class="feature-icon flex-shrink-0">
+                    <i class="bi bi-2-square"></i>
+                  </div>
+                </div>
+              </div><!-- End .feature-item -->
+            </div>
+  
+            <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+              <div class="phone-mockup text-center">
+                <img src="../images/steps2.png" alt="" class="img-fluid">
+              </div>
+            </div><!-- End Phone Mockup -->
+  
+            <div class="col-lg-4">
+  
+              <div class="feature-item mb-5" data-aos="fade-left" data-aos-delay="200">
+                <div class="d-flex align-items-center gap-4">
+                  <div class="feature-icon flex-shrink-0">
+                    <i class="bi bi-3-square"></i>
+                  </div>
+                  <div class="feature-content">
+                    <h3>Remas dan Lipat</h3>
+                    <p>Remas dan lipat sampah untuk memaksimalkan ruang dan volume pengiriman.</p>
+                  </div>
+                </div>
+              </div><!-- End .feature-item -->
+  
+              <div class="feature-item mb-5" data-aos="fade-left" data-aos-delay="300">
+                <div class="d-flex align-items-center gap-4">
+                  <div class="feature-icon flex-shrink-0">
+                    <i class="bi bi-4-square"></i>
+                  </div>
+                  <div class="feature-content">
+                    <h3>Kemas Rapi</h3>
+                    <p>Kemas sampah menggunakan kardus atau kemasan lain. Jangan lupa tulis kode SYW pada paket.</p>
+                  </div>
+                </div>
+              </div><!-- End .feature-item -->
+            </div>
+          </div>
+  
+        </div>
+  
+      </section><!-- /Features 2 Section -->
+
+  
+  <!-- Contact Section -->
+<section id="contact" class="contact section">
+
+ 
+  <div class="container">
+    <div class="col text-center section-title">
+      <h2 class="fw-bold">Kontak</h2>
+      <p class="lead">Lokasi Kami</p>
+    </div>
+    <div class="row gx-lg-0 gy-4">
+
+      <div class="col-lg-6">
+        <div class="info-container d-flex flex-column align-items-start justify-content-start">
+          <div class="info-item d-flex">
+            <i class="bi bi-geo-alt flex-shrink-0"></i>
+            <div>
+              <h3>Alamat</h3>
+              <p>Jl. Trowulan No.51, Bendogerit, Kec. Sananwetan, Kota Blitar, Jawa Timur 66133</p>
+            </div>
+          </div><!-- End Info Item -->
+          <div class="info-item d-flex">
+              <i class="bi bi-telephone flex-shrink-0"></i>
+              <div>
+                <h3>Telepon</h3>
+                <p>0815-5672-6113</p>
+              </div>
+            </div><!-- End Info Item -->
+
+          <div class="info-item d-flex">
+            <i class="bi bi-envelope flex-shrink-0"></i>
+            <div>
+              <h3>Email Us</h3>
+              <p>info@example.com</p>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="info-item d-flex">
+            <i class="bi bi-clock flex-shrink-0"></i>
+            <div>
+              <h3>Open Hours:</h3>
+              <p>Mon-Sat: 11AM - 23PM</p>
+            </div>
+          </div><!-- End Info Item -->
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15800.776286313656!2d112.16813832521441!3d-8.081680449094991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78ec5bd680957f%3A0x5b7c020ec9576159!2sBank%20Sampah%20Anggrek!5e0!3m2!1sen!2sid!4v1736187600239!5m2!1sen!2sid" width="650" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div><!-- End Contact Form -->
+
+    </div>
+
+  </div>
+
+</section><!-- /Contact Section -->
+  
+</main>
+
+<%- include('layout/footer') %>  

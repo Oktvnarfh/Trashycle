@@ -1,0 +1,93 @@
+<%- include('../layout/header') %>
+<div class="app-wrapper">
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+            <h1 class="app-page-title">Edit Transaksi</h1>
+            <hr class="mb-4">
+            <% if (messages.error) { %>
+                <div class="alert alert-danger"><%= messages.error %></div>
+            <% } %>
+            <% if (messages.success) { %>
+                <div class="alert alert-success"><%= messages.success %></div>
+            <% } %>
+            <div class="row g-4 settings-section">
+                <div class="col-12 col-md-8">
+                    <div class="app-card app-card-settings shadow-sm p-4">
+                        <div class="app-card-body">
+                            <form class="settings-form" action="/admin/transactions/update/<%= transaction.id %>" method="POST">
+                                <div class="mb-3">
+                                    <label for="user_id" class="form-label">Nama Nasabah</label>
+                                    <select class="form-select" id="user_id" name="user_id" required>
+                                        <option value="" disabled>Pilih Nasabah</option>
+                                        <% users.forEach(user => { %>
+                                            <option value="<%= user.id %>" <%= user.id === transaction.nasabah_id ? 'selected' : '' %>><%= user.nama_lengkap %></option>
+                                        <% }); %>
+                                    </select>
+                                </div>
+
+                                <div id="categories-container">
+                                    <% transactionDetails.forEach(detail => { %>
+                                    <div class="category-group">
+                                        <div class="mb-3">
+                                            <label for="kategori_id" class="form-label">Jenis Sampah</label>
+                                            <select class="form-select" name="kategori_id[]" required>
+                                                <option value="" disabled>Pilih Jenis Sampah</option>
+                                                <% categories.forEach(category => { %>
+                                                    <option value="<%= category.id %>" <%= category.id === detail.kategori_id ? 'selected' : '' %>><%= category.jenis_sampah %></option>
+                                                <% }); %>
+                                            </select>
+                                            <div class="mb-3">
+                                                <label for="total_kg" class="form-label">Total (Kg)</label>
+                                                <input type="number" class="form-control" name="total_kg[]" step="0.01" value="<%= detail.jumlah %>" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% }); %>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <button type="button" class="btn app-btn-primary" id="add-category-btn">Tambah Kategori</button>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="status" class="form-label">Status</label>
+                                    <select name="status" class="form-select" required>
+                                        <option value="pending" <%= transaction.status === 'pending' ? 'selected' : '' %>>Pending</option>
+                                        <option value="complete" <%= transaction.status === 'complete' ? 'selected' : '' %>>Completed</option>
+                                        <option value="canceled" <%= transaction.status === 'canceled' ? 'selected' : '' %>>Canceled</option>
+                                    </select>
+                                </div>
+
+                                <button type="submit" class="btn app-btn-primary">Update Transaksi</button>
+                            </form>
+                        </div><!--//app-card-body-->
+                    </div><!--//app-card-->
+                </div>
+            </div><!--//row-->
+        </div><!--//container-xl-->
+    </div><!--//app-content-->
+</div>
+<script>
+    document.getElementById('add-category-btn').addEventListener('click', function() {
+        const container = document.getElementById('categories-container');
+        const newCategoryGroup = document.createElement('div');
+        newCategoryGroup.classList.add('category-group');
+        newCategoryGroup.innerHTML = `
+            <div class="mb-3">
+                <label for="kategori_id" class="form-label">Jenis Sampah</label>
+                <select class="form-select" name="kategori_id[]" required>
+                    <% categories.forEach(category => { %>
+                        <option value="<%= category.id %>"><%= category.jenis_sampah %></option>
+                    <% }); %>
+                </select>
+                <div class="mb-3">
+                    <label for="total_kg" class="form-label">Total (Kg)</label>
+                    <input type="number" class="form-control" name="total_kg[]" step="0.01" required>
+                </div>
+            </div>
+        `;
+        container.appendChild(newCategoryGroup);
+    });
+</script>
+
+<%- include('../layout/footer') %>

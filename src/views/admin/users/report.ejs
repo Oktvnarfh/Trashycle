@@ -1,0 +1,50 @@
+<%- include('../layout/header') %>
+
+<div class="app-wrapper">
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+            <div class="row">
+                <div class="col-auto">
+                    <h1 class="app-page-title">Laporan Nasabah</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="app-card app-card-orders-table shadow-sm mb-5">
+                        <div class="app-card-body">
+                            <div class="table-responsive">
+                                <table class="table app-table-hover mb-0 text-left">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>No Urut</th>
+                                            <th>Nama Lengkap</th>
+                                            <th>Gender</th>
+                                            <th>No Rekening</th>
+                                            <th>Keterangan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% data.forEach((users, index) => { %>
+                                            <tr>
+                                                <td><%= index + 1 %></td>
+                                                <td><%= users.no_urut %></td>
+                                                <td><%= users.nama_lengkap %></td>
+                                                <td><%= users.gender %></td>
+                                                <td><%= users.no_rekening %></td>
+                                                <td><%= users.keterangan %></td>
+                                            </tr>
+                                        <% }); %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="window.print()" class="btn app-btn-secondary">Print</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../layout/footer') %>

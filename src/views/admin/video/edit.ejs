@@ -1,0 +1,46 @@
+<%- include('../layout/header') %>
+
+<div class="app-wrapper">
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+            <h1 class="app-page-title">Edit Link Video</h1>
+            <hr class="mb-4">
+            <% if(messages.error) { %>
+                <div class="alert alert-danger"><%- messages.error %></div>
+            <% } %>
+            <% if(messages.success) { %>
+                <div class="alert alert-success"><%- messages.success %></div>
+            <% } %>
+            <div class="row g-4 settings-section">
+                <div class="col-12 col-md-8">
+                    <div class="app-card app-card-settings shadow-sm p-4">
+                        <div class="app-card-body">
+                            <% if (videos) { %>
+                                <form class="settings-form" action="/admin/videos/update/<%= videos.id %>?_method=PUT" method="POST">
+                                    <input type="hidden" name="id" value="<%= videos.id %>">
+                                    <div class="mb-3">
+                                        <label for="edit-link" class="form-label">Link Video</label>
+                                        <input type="text" class="form-control" id="edit-link" name="v_link" value="<%= videos.v_link %>" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit-judul" class="form-label">Judul</label>
+                                        <input type="text" name="judul" value="<%= videos.judul %>"class="form-control" id="edit-judul" required></input>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit-channel" class="form-label">Channel</label>
+                                        <input type="text" class="form-control" id="edit-channel" name="channel" value="<%= videos.channel %>" required>
+                                    </div>
+                                    <button type="submit" class="btn app-btn-primary">Save Changes</button>
+                                </form>
+                            <% } else { %>
+                                <p>Video tidak ditemukan.</p>
+                            <% } %>
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../layout/footer') %>

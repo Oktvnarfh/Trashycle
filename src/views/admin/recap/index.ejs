@@ -1,0 +1,56 @@
+<%- include('../layout/header') %>
+
+<div class="app-wrapper">
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+            <h1 class="app-page-title">Rekap Kas Bank Sampah</h1>
+            <hr class="mb-4">
+            <div class="col-auto">
+                <% if (messages.error) { %>
+                  <div class="alert alert-danger bubble-notification"><%= messages.error %></div>
+                <% } %>
+                <% if (messages.success) { %>
+                  <div class="alert alert-success bubble-notification"><%= messages.success %></div>
+                <% } %>
+              </div>
+
+            <div class="row g-4 settings-section">
+                <div class="col-12 col-md-12">
+                    <div class="app-card app-card-settings shadow-sm p-4">
+                        <div class="my-3">
+                            <button class="btn btn-primary" onclick="window.print()">Print Rekap</button>
+                        </div>
+                        <div class="app-card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Tanggal</th>
+                                            <th>Saldo Awal (Rp)</th>
+                                            <th>Penerimaan (D) (Rp)</th>
+                                            <th>Pengeluaran (K) (Rp)</th>
+                                            <th>Saldo Akhir (Rp)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% rekapList.forEach(rekap => { %>
+                                            <tr>
+                                                <td><%= rekap.tanggal %></td>
+                                                <td><%= rekap.saldo_awal %></td>
+                                                <td><%= rekap.total_penerimaan %></td>
+                                                <td><%= rekap.total_pengeluaran %></td>
+                                                <td><%= rekap.saldo %></td>
+                                            </tr>
+                                        <% }); %>
+                                    </tbody>
+                                </table>
+                            </div><!--//table-responsive-->
+                        </div><!--//app-card-body-->
+                    </div><!--//app-card-->
+                </div>
+            </div><!--//row-->
+        </div><!--//container-xl-->
+    </div><!--//app-content-->
+</div><!--//app-wrapper-->
+
+<%- include('../layout/footer') %>

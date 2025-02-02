@@ -1,0 +1,96 @@
+<%- include('../layout/header') %>
+
+<div class="app-wrapper">
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+            <div class="row g-3 mb-4 align-items-center justify-content-between">
+                <div class="col-auto">
+                    <h1 class="app-page-title mb-0">Link Video Manajemen</h1>
+                </div>
+                <div class="col-auto">
+                    <% if (messages.error) { %>
+                      <div class="alert alert-danger bubble-notification"><%= messages.error %></div>
+                    <% } %>
+                    <% if (messages.success) { %>
+                      <div class="alert alert-success bubble-notification"><%= messages.success %></div>
+                    <% } %>
+                  </div>
+                <div class="col-auto">
+                    <div class="page-utilities">
+                        <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
+                            <div class="col-auto">
+                                <form class="table-search-form row gx-1 align-items-center">
+                                    <div class="col-auto">
+                                        <input type="text" id="search-orders" name="searchorders" class="form-control search-orders" placeholder="Search">
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="submit" class="btn app-btn-secondary">Search</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-auto">
+                                <a class="btn app-btn-secondary" href="/admin/videos/add">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                                    </svg>
+                                    Tambah Link Video
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="orders-table-tab-content">
+                <div class="app-card app-card-orders-table shadow-sm mb-5">
+                    <div class="app-card-body">
+                        <div class="table-responsive">
+                            <table class="table app-table-hover mb-0 text-left">
+                                <thead>
+                                    <tr>
+                                        <th class="cell">No</th>
+                                        <th class="cell">Link Video</th>
+                                        <th class="cell">Judul</th>
+                                        <th class="cell">Channel</th>
+                                        <th class="cell">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% data.forEach((videos, index) => { %>
+                                        <tr>
+                                            <td class="cell"><%= index + 1 %></td>
+                                            <td class="cell"><%= videos.v_link %></td>
+                                            <td class="cell"><%= videos.judul %></td>
+                                            <td class="cell"><%= videos.channel %></td>
+                                            <td class="cell">
+                                                <a class="btn-sm btn btn-primary" href="/admin/videos/edit/<%= videos.id %>">Edit</a>
+                                                <form action="/admin/videos/delete/<%= videos.id %>?_method=DELETE" method="POST" style="display:inline;">
+                                                    <button class="btn-sm btn btn-danger" onclick="return confirm('yakin ingin menghapus ?')">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <nav class="app-pagination">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../layout/footer') %>

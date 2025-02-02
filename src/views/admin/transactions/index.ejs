@@ -1,0 +1,108 @@
+<%- include('../layout/header') %>
+
+<div class="app-wrapper">
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+            <div class="row g-3 mb-4 align-items-center justify-content-between">
+                <div class="col-auto">
+                    <h1 class="app-page-title mb-0">Manajemen Transaksi</h1>
+                </div>
+                <div class="col-auto">
+                    <% if (messages.error) { %>
+                      <div class="alert alert-danger bubble-notification"><%= messages.error %></div>
+                    <% } %>
+                    <% if (messages.success) { %>
+                      <div class="alert alert-success bubble-notification"><%= messages.success %></div>
+                    <% } %>
+                  </div>
+                <div class="col-auto">
+                    <div class="page-utilities">
+                        <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
+                            <div class="col-auto">
+                                <form class="table-search-form row gx-1 align-items-center">
+                                    <div class="col-auto">
+                                        <a href="/admin/transactions/report" class="btn app-btn-secondary">Cetak Laporan</a>
+                                    </div>                                    
+                                </form>
+                            </div>
+                            <div class="col-auto">
+                                <a class="btn app-btn-secondary" href="/admin/transactions/add">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                                    </svg>
+                                    Tambah Transaksi
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="orders-table-tab-content">
+                <div class="app-card app-card-orders-table shadow-sm mb-5">
+                    <div class="app-card-body">
+                        <div class="table-responsive">
+                            <table class="table app-table-hover mb-0 text-left">
+                                <thead>
+                                    <tr>
+                                        <th class="cell">No</th>
+                                        <th class="cell">No Urut</th>
+                                        <th class="cell">Nama Lengkap</th>
+                                        <th class="cell">Jenis Sampah</th>
+                                        <th class="cell">Total (Kg)</th>
+                                        <th class="cell">Total Uang</th>
+                                        <th class="cell">Status</th>
+                                        <th class="cell">Tanggal</th>
+                                        <th class="cell">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% data.forEach((transactions, index) => { %>
+                                        <tr>
+                                            <td class="cell"><%= index + 1 %></td>
+                                            <td class="cell"><%= transactions.no_urut %></td>
+                                            <td class="cell"><%= transactions.nama_lengkap %></td>
+                                            <td class="cell"><%= transactions.jenis_sampah %></td>
+                                            <td class="cell"><%= transactions.total_kg %></td>
+                                            <td class="cell"><%= transactions.total_uang %></td>
+                                            <td class="cell">
+                                                <% if (transactions.status === 'complete') { %>
+                                                    <span class="badge bg-success">Completed</span>
+                                                <% } else if (transactions.status === 'pending') { %>
+                                                    <span class="badge bg-primary">Pending</span>
+                                                <% } else { %>
+                                                    <span class="badge bg-danger">Canceled</span>
+                                                <% } %>
+                                            </td>
+                                            <td class="cell"><%= new Date(transactions.tanggal).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %></td>
+                                            <td class="cell">
+                                                <a class="btn-sm btn btn-primary" href="/admin/transactions/edit/<%= transactions.id %>">Edit</a>
+                                                <form action="/admin/transactions/delete/<%= transactions.id %>?_method=DELETE" method="POST" style="display:inline;">
+                                                    <button class="btn-sm btn btn-danger" onclick="return confirm('Yakin ingin menghapus ?')">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <nav class="app-pagination">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../layout/footer') %>

@@ -1,0 +1,97 @@
+<%- include('../layout/header') %>
+
+<div class="app-wrapper">
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+            <h1 class="app-page-title">Laporan Transaksi</h1>
+            <hr class="mb-4">
+            
+            <% if (messages.error) { %>
+                <div class="alert alert-danger"><%= messages.error %></div>
+            <% } %>
+            <% if (messages.success) { %>
+                <div class="alert alert-success"><%= messages.success %></div>
+            <% } %>
+
+            <div class="row g-4 settings-section">
+                <div class="col-12 col-md-12">
+                    <div class="app-card app-card-settings shadow-sm p-4">
+                        <div class="my-3">
+                            <button class="btn btn-primary" onclick="window.print()">Print Laporan</button>
+                        </div>
+                        <div class="app-card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nama Nasabah</th>
+                                            <th>Jenis Sampah</th>
+                                            <th>Total (Kg)</th>
+                                            <th>Total Uang</th>
+                                            <th>Status</th>
+                                            <th>Tanggal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% data.forEach(transaction => { %>
+                                            <tr>
+                                                <td><%= transaction.id %></td>
+                                                <td><%= transaction.nama_lengkap %></td>
+                                                <td><%= transaction.jenis_sampah %></td>
+                                                <td><%= transaction.total_kg %> kg</td>
+                                                <td>Rp <%= transaction.total_uang.toLocaleString() %></td>
+                                                <td>
+                                                    <% if (transaction.status === 'complete') { %>
+                                                        <span class="badge bg-success">Selesai</span>
+                                                    <% } else if (transaction.status === 'canceled') { %>
+                                                        <span class="badge bg-danger">Dibatalkan</span>
+                                                    <% } else { %>
+                                                        <span class="badge bg-warning"><%= transaction.status %></span>
+                                                    <% } %>
+                                                </td>
+                                                <td><%= new Date(transaction.tanggal).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %></td>
+                                            </tr>
+                                        <% }); %>
+                                    </tbody>
+                                </table>
+                            </div><!--//table-responsive-->
+                        </div><!--//app-card-body-->
+                    </div><!--//app-card-->
+                </div>
+            </div><!--//row-->
+
+            <!-- Pagination -->
+            <% if (totalPages > 1) { %>
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <% if (currentPage > 1) { %>
+                            <li class="page-item">
+                                <a class="page-link" href="/admin/transactions/report?page=<%= currentPage - 1 %>" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        <% } %>
+                        
+                        <% for (let i = 1; i <= totalPages; i++) { %>
+                            <li class="page-item <%= i === currentPage ? 'active' : '' %>">
+                                <a class="page-link" href="/admin/transactions/report?page=<%= i %>"><%= i %></a>
+                            </li>
+                        <% } %>
+
+                        <% if (currentPage < totalPages) { %>
+                            <li class="page-item">
+                                <a class="page-link" href="/admin/transactions/report?page=<%= currentPage + 1 %>" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        <% } %>
+                    </ul>
+                </nav>
+            <% } %>
+
+        </div><!--//container-xl-->
+    </div><!--//app-content-->
+</div><!--//app-wrapper-->
+
+<%- include('../layout/footer') %>

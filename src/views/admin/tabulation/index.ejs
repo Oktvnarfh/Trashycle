@@ -1,0 +1,56 @@
+<%- include('../layout/header') %>
+<div class="app-wrapper">
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+            <h1 class="app-page-title">Laporan Transaksi</h1>
+            <hr class="mb-4">
+            <div class="col-auto">
+                <% if (messages.error) { %>
+                  <div class="alert alert-danger bubble-notification"><%= messages.error %></div>
+                <% } %>
+                <% if (messages.success) { %>
+                  <div class="alert alert-success bubble-notification"><%= messages.success %></div>
+                <% } %>
+              </div>
+            <div class="row g-4 settings-section">
+                <div class="col-12 col-md-12">
+                    <div class="app-card app-card-settings shadow-sm p-4">
+                        <div class="my-3">
+                            <button class="btn btn-primary" onclick="window.print()">Cetak Tabulasi</button>
+                        </div>
+                        <div class="app-card-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Jenis Sampah</th>
+                                        <th>Kilogram/Bulan</th>
+                                        <th>Total/Tahun</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% if (tabulationData.length > 0) { %>
+                                        <% tabulationData.forEach((item, index) => { %>
+                                          <tr>
+                                            <td><%= index + 1 %></td>
+                                            <td><%= item.jenis_sampah %></td>
+                                            <td><%= item.total_kg_per_bulan %></td>
+                                            <td><%= item.total_kg_per_tahun %></td>
+                                          </tr>
+                                        <% }); %>
+                                      <% } else { %>
+                                        <tr>
+                                          <td colspan="4">Tidak ada data tabulasi.</td>
+                                        </tr>
+                                      <% } %>
+                                </tbody>
+                            </table>
+                            
+                        </div><!--//app-card-body-->
+                    </div><!--//app-card-->
+                </div>
+            </div><!--//row-->
+        </div><!--//container-fluid-->
+    </div><!--//app-content-->
+</div>
+<%- include('../layout/footer') %>

@@ -1,0 +1,164 @@
+{
+    "organik": [
+        {
+          "id": "1a",
+          "image": "/images/panduan/sisa makanan.jpg",
+          "name": "Sisa Makanan",
+          "description": "Mendaur ulang sisa makanan bukan hanya membuangnya ke tempat sampah. Ada beberapa cara kreatif dan ramah lingkungan untuk memanfaatkan kembali sisa makanan, lho :",
+          "masa": "1-6 bulan",
+          "tips": [
+            {
+              "nameTips": "Pengomposan",
+              "desc" : "Sisa makanan organik, seperti sayur, buah, dan nasi, dapat diolah menjadi kompos"
+            },
+            {
+              "nameTips": "Pengolahan Pakan Ternak",
+              "desc" : "Pakan ternak yang diolah dari sisa makanan dapat membantu mengurangi ketergantungan pada pakan ternak konvensional"
+            },
+            {
+                "nameTips": "Pembuatan Biogas",
+                "desc" : "Kaca daur ulang dapat digunakan untuk membuat botol kaca baru dengan kualitas yang hampir sama dengan botor kaca baru"
+            }
+          ]
+        },
+        {
+            "id": "1b",
+            "name": "Minyak Jelantah",
+            "image": "/images/panduan/minyak.jpg",
+            "description": "Buangan sampah dari minyak jelantah masih dibuang secara sembarangan dan didaur ulang untuk dijual kembali. Agar tidak disalahgunakan dan menjadi sampah, minyak jelantah dapat dimanfaatkan menjadi berbagai produk bermanfaaat",
+            "masa": "6-12 bulan",
+            "tips": [
+              {
+                "nameTips": "Bahan Bakar Bio Diesel",
+                "desc" : "Bio Diesel dari minyak jelantah memiliki kualitas lebih tinggi, karena kandungan airnya lebih rendah"
+              },
+              {
+                "nameTips": "Olah jadi Lilin Hias",
+                "desc" : "Bahan bakunya hanya perlu minyak jelantah dan campuran parafin"
+              },
+              {
+                  "nameTips": "Olah Jadi Sabun",
+                  "desc" : "Hanya dengan bahan baku minyak jelantah bekas dan bahan kimia NaOH"
+              }
+            ]
+        },
+        {
+            "id": "1c",
+            "name": "Kayu",
+            "image": "/images/panduan/kayu.jpg",
+            "description": "Di Indonesia, jumlah limbah kayu terus meningkat seiring dengan perkembangan industri pengolahan kayu. Namun, limbah kayu juga memiliki potensi untuk diolah menjadi produk yang bermanfaat. Dengan mengolah limbah kayu secara berkelanjutan",
+            "masa": "1-3 tahun",
+            "tips": [
+              {
+                "nameTips": "Membuat Furniture",
+                "desc" : "Potongan kayu bekas dapat diolah menjadi berbagai macam furniture, seperti meja, kursi, rak, dan sebagainya"
+              },
+              {
+                "nameTips": "Kerajinan tangan",
+                "desc" : "Limbah kayu dapat diolah menjadi berbagai macam kerajinan tangan, seperti hiasan rumah, mainan anak, dan sebagainya"
+              },
+              {
+                  "nameTips": "Memperbaiki bangunan",
+                  "desc" : "Limbah kayu dapat digunakan untuk memperbaiki bangunan, seperti membuat pagar, tangga, dan sebagainya"
+              }
+            ]
+        },
+        {
+            "id": "1d",
+            "name": "Daun",
+            "image": "/images/panduan/daun.jpg",
+            "description": "Daur ulang limbah daun adalah kegiatan mudah, murah, dan bermanfaaat. Dengan mendaur ulang limbah daun, kita dapat membantu menjaga kesehatan lingkungan, meningkatkan kesuburan tanah, dan menghasilkan pupuk organik yang berkualitas",
+            "masa": "2-4 Minggu",
+            "tips": [
+              {
+                "nameTips": "Kompos",
+                "desc" : "Kumpulan daun-daun kering ditempat yang teduh dan kering. Tumpuk daun-daun tersebut dan sirami secara berkala dengan air. Aduk tumulan daun sesekali untuk mempercepat proses pengomposan"
+              },
+              {
+                "nameTips": "Mulsa Organik",
+                "desc" : "Tutupi permukaan tanah di sekitar tanaman dengan daun-daun kering. Mulsa dapat membantu menjaga kelembaban tanah, menekan pertumbuhan gulma, dan mencegah erosi tanah"
+              },
+              {
+                  "nameTips": "Pakan Ternak",
+                  "desc" : "Daun-daun kering tertentu, seperti daun singkong dan daun pepaya, dapat diolah menjadi pakan ternak"
+              }
+            ]
+        }
+    ],
+    "anorganik": [
+    {
+      "id": "2a",
+      "image": "/images/panduan/plastik.jpg",
+      "name": "Plastik",
+      "description": "Plastik adalah sampah anorganik yang bisa didaur ulang untuk mengurangi pencemaran lingkungan.",
+      "masa": "10-1000 tahun",
+      "tips": [
+        {
+          "nameTips": "Pengolahan menjadi Biji Plastik",
+          "desc": "Plastik bekas bisa dicacah dan dilelehkan menjadi biji plastik untuk digunakan kembali dalam produksi baru."
+        },
+        {
+          "nameTips": "Kerajinan Tangan",
+          "desc": "Botol plastik bekas bisa diubah menjadi pot bunga, celengan, atau aksesoris lainnya."
+        },
+        {
+          "nameTips": "Penggunaan Kembali",
+          "desc": "Plastik sekali pakai seperti kantong plastik dapat digunakan berulang kali untuk mengurangi limbah."
+        }
+      ]
+    },
+    {
+      "id": "2b",
+      "image": "/images/panduan/kaca.jpg",
+      "name": "Kaca",
+      "description": "Limbah kaca bisa didaur ulang untuk mengurangi limbah yang sulit terurai.",
+      "masa": "Tidak terurai",
+      "tips": [
+        {
+          "nameTips": "Peleburan Kaca",
+          "desc": "Kaca bekas bisa dilebur kembali untuk membuat produk kaca baru seperti botol atau kaca jendela."
+        },
+        {
+          "nameTips": "Dekorasi dan Kerajinan",
+          "desc": "Pecahan kaca dapat dimanfaatkan sebagai dekorasi atau seni mozaik."
+        }
+      ]
+    }
+  ],
+  "b3": [
+    {
+      "id": "3a",
+      "image": "/images/panduan/elektronik.jpg",
+      "name": "Limbah Elektronik",
+      "description": "Limbah elektronik seperti baterai dan perangkat elektronik bekas mengandung zat berbahaya yang harus didaur ulang dengan cara khusus.",
+      "masa": "Tidak terurai",
+      "tips": [
+        {
+          "nameTips": "Pengolahan di Bank Sampah Elektronik",
+          "desc": "Beberapa bank sampah menerima limbah elektronik untuk diolah kembali."
+        },
+        {
+          "nameTips": "Daur Ulang Komponen",
+          "desc": "Komponen seperti kabel, logam, dan plastik dalam perangkat elektronik bisa didaur ulang."
+        }
+      ]
+    },
+    {
+      "id": "3b",
+      "image": "/images/panduan/baterai.jpg",
+      "name": "Baterai Bekas",
+      "description": "Baterai bekas mengandung bahan kimia beracun yang dapat mencemari lingkungan jika tidak dibuang dengan benar.",
+      "masa": "100-1000 tahun",
+      "tips": [
+        {
+          "nameTips": "Pembuangan di Tempat Khusus",
+          "desc": "Baterai bekas harus dibuang di tempat pengumpulan baterai bekas yang sudah tersedia di beberapa daerah."
+        },
+        {
+          "nameTips": "Daur Ulang Logam Berat",
+          "desc": "Beberapa bagian baterai bisa diproses untuk mendapatkan kembali logam seperti lithium dan nikel."
+        }
+      ]
+    }
+  ]
+}

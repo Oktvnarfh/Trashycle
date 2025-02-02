@@ -1,0 +1,36 @@
+<%- include('layout/header') %>
+<header class="hero-section text-center bg-light">
+    <h1 class="text-light">Video Edukasi Daur Ulang Sampah</h1>
+    <p class="lead">Pelajari cara memilah dan mendaur ulang berbagai jenis sampah melalui video yang mudah dipahami</p>
+</header>
+<div class="container py-5">
+    <div class="video-grid">
+        <div class="row g-4">
+            <% if (videos && videos.length > 0) { %>
+                <% videos.forEach(video => { %>
+                    <div class="col-md-4">
+                        <div class="video-card">
+                            <div class="thumbnail">
+                                <img src="https://img.youtube.com/vi/<%= video.v_link %>/hqdefault.jpg" alt="<%= video.judul %>">
+                                <div class="overlay">
+                                    <a href="https://www.youtube.com/watch?v=<%= video.v_link %>" target="_blank">
+                                        <span class="duration"><%= video.duration %></span>
+                                        <span class="difficulty <%= video.difficulty.toLowerCase() %>"><%= video.difficulty %></span>
+                                        <i class="bi bi-play-circle play-btn"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="content-video">
+                                <h3 class="fs-6"><%= video.judul %></h3>
+                                <p class="category"><i class="bi bi-person-circle me-2"></i> <%= video.channel %></p>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p class="text-center">Belum ada video edukasi yang tersedia.</p>
+            <% } %>
+        </div>
+    </div>
+</div>
+<%- include('layout/footer') %>  

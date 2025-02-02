@@ -1,0 +1,87 @@
+<%- include('layout/header') %>
+
+<header class="text-center hero-section" >
+    <h1 class="text-light">Panduan Daur Ulang Sampah</h1>
+    <p class="lead">Pelajari cara memilah dan mendaur ulang berbagai jenis sampah dengan benar</p>
+</header>
+
+<div class="container py-5">
+    <div class="row g-4">
+        <% const categories = [
+        { type: "Organik", data: panduan.organik },
+        { type: "Anorganik", data: panduan.anorganik },
+        { type: "B3", data: panduan.b3 }
+    ]; %>
+    
+    <% for (const category of categories) { %>
+        <% for (const item of category.data) { %>
+            <div class="col-md-4">
+                <div class="card h-100 recycling-card">
+                    <a href="/home/tips/<%= item.id %>">
+                        <img src="<%= item.image %>" class="card-img-top" alt="<%= item.name %>">
+                        <div class="card-body">
+                            <!-- Badge kategori -->
+                            <span class="badge 
+                                <%= category.type === 'Organik' ? 'bg-success' : 
+                                    category.type === 'Anorganik' ? 'bg-primary' : 
+                                    'bg-danger' %>">
+                                <%= category.type %>
+                            </span>
+                            
+                            <h5 class="card-title mt-2"><%= item.name %></h5>
+                            <p class="card-text"><%= item.description.split(' ').slice(0, 10).join(' ') %>...</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        <% } %>
+    <% } %>
+        <!-- <div class="col-md-4">
+            <div class="card h-100 recycling-card">
+                <img src="https://images.unsplash.com/photo-1605600659908-0ef719419d41" class="card-img-top" alt="Plastic Waste">
+                <div class="card-body">
+                    <h5 class="card-title">Plastic Waste</h5>
+                    <p class="card-text">Bottles, containers, and recyclable plastic items</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 recycling-card">
+                <img src="https://images.unsplash.com/photo-1589634749000-1e72ec00a13f" class="card-img-top" alt="Paper Waste">
+                <div class="card-body">
+                    <h5 class="card-title">Paper Waste</h5>
+                    <p class="card-text">Newspapers, cardboard, and paper products</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 recycling-card">
+                <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03" class="card-img-top" alt="Electronic Waste">
+                <div class="card-body">
+                    <h5 class="card-title">Electronic Waste</h5>
+                    <p class="card-text">Old devices, batteries, and electronic equipment</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 recycling-card">
+                <img src="https://images.unsplash.com/photo-1587559045816-8b0a54d5c80d" class="card-img-top" alt="Glass Waste">
+                <div class="card-body">
+                    <h5 class="card-title">Glass Waste</h5>
+                    <p class="card-text">Bottles, jars, and recyclable glass items</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 recycling-card">
+                <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69" class="card-img-top" alt="Metal Waste">
+                <div class="card-body">
+                    <h5 class="card-title">Metal Waste</h5>
+                    <p class="card-text">Cans, aluminum, and scrap metal materials</p>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>
+
+<%- include('layout/footer') %>  

@@ -1,0 +1,41 @@
+<%- include('../layout/header') %>
+<div class="app-wrapper">
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">			    
+            <h1 class="app-page-title">Edit transaction</h1>
+            <hr class="mb-4">
+
+            <!-- Tampilkan pesan flash -->
+            <% if (locals.error) { %>
+                <div class="alert alert-danger"><%= error %></div>
+            <% } %>
+            <% if (locals.success) { %>
+                <div class="alert alert-success"><%= success %></div>
+            <% } %>
+            
+            <div class="row g-4 settings-section">
+                <div class="col-12 col-md-8">
+                    <div class="app-card app-card-settings shadow-sm p-4">
+                        <div class="app-card-body">
+                            <form action="/admin/withdrawals/update/<%= withdrawal.id %>?_method=PUT" method="POST">
+                                <input type="hidden" name="userId" value="<%= withdrawal.user_id %>">
+                                <div class="mb-3">
+                                    <label for="status" class="form-label">Status</label>
+                                    <select name="status" class="form-control" value="<%= withdrawal.status %>">
+                                        <option value="pending" <%= withdrawal.status === 'pending' ? 'selected' : '' %>>Pending</option>
+                                        <option value="rejected" <%= withdrawal.status === 'rejected' ? 'selected' : '' %>>Rejected</option>
+                                        <option value="approved" <%= withdrawal.status === 'approved' ? 'selected' : '' %>>Approved</option>
+                                        <option value="completed" <%= withdrawal.status === 'completed' ? 'selected' : '' %>>Completed</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn app-btn-primary">Save Changes</button>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('../layout/footer') %>
+</div>

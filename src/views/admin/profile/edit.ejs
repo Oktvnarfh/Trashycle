@@ -1,0 +1,57 @@
+<%- include('./layout/headerr') %>
+<div class="app-wrapper">
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">			    
+            <h1 class="app-page-title">Edit Profile</h1>
+            <hr class="mb-4">
+
+            <% if (locals.error) { %>
+                <div class="alert alert-danger" role="alert">
+                    <%= error %>
+                </div>
+            <% } %>
+            <% if (locals.success) { %>
+                <div class="alert alert-success" role="alert">
+                    <%= success %>
+                </div>
+            <% } %>
+            
+            <div class="row g-4 settings-section">
+                <div class="col-12 col-md-8">
+                    <div class="app-card app-card-settings shadow-sm p-4">
+                        <div class="app-card-body">
+                            <form action="/admin/profile/<%= admin.id %>?_method=PUT" method="POST">
+                                <div class="mb-3">
+                                  <label for="nama" class="form-label">Nama</label>
+                                  <input type="text" class="form-control" id="nama" name="nama" value="<%= admin.nama %>" required>
+                                </div>
+                                <div class="mb-3">
+                                  <label for="no_tlp" class="form-label">No Telepon</label>
+                                  <input type="text" class="form-control" id="no_tlp" name="no_tlp" value="<%= admin.no_tlp %>" required>
+                                </div>
+                                <div class="mb-3">
+                                  <label for="kode_pos" class="form-label">Kode Pos</label>
+                                  <input type="text" class="form-control" id="kode_pos" name="kode_pos" value="<%= admin.kode_pos %>" required>
+                                </div>
+                                <div class="mb-3">
+                                  <label for="alamat" class="form-label">Alamat</label>
+                                  <textarea class="form-control h-25" id="alamat" name="alamat" rows="5" required><%= admin.alamat %></textarea>
+                                </div>
+                                <div class="mb-3">
+                                  <label for="kota" class="form-label">Kota</label>
+                                  <input type="text" class="form-control" id="kota" name="kota" value="<%= admin.kota %>" required>
+                                </div>
+                                <div class="mb-3">
+                                  <label for="provinsi" class="form-label">Provinsi</label>
+                                  <input type="text" class="form-control" id="provinsi" name="provinsi" value="<%= admin.provinsi %>" required>
+                                </div>
+                                <button type="submit" class="btn app-btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('./layout/footer') %>
+</div>

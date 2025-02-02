@@ -1,0 +1,51 @@
+<%- include('../layout/header') %>
+<div class="app-wrapper">
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+            <h1 class="app-page-title">Edit Nasabah</h1>
+            <hr class="mb-4">
+            <% if (messages.error) { %>
+                <div class="alert alert-danger"><%= messages.error %></div>
+            <% } %>
+            <% if (messages.success) { %>
+                <div class="alert alert-success"><%= messages.success %></div>
+            <% } %>
+            <div class="row g-4 settings-section">
+                <div class="col-12 col-md-8">
+                    <div class="app-card app-card-settings shadow-sm p-4">
+                        <div class="app-card-body">
+                            <form class="settings-form" action="/admin/users/update/<%= user.id %>" method="POST">
+                                <!-- Nama Lengkap -->
+                                <div class="mb-3">
+                                    <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
+                                    <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" value="<%= user.nama_lengkap %>" required>
+                                </div>
+                                <!-- Gender -->
+                                <div class="mb-3">
+                                    <label for="gender" class="form-label">Gender</label>
+                                    <select class="form-control" id="gender" name="gender" required>
+                                        <option value="L" <%= user.gender === 'L' ? 'selected' : '' %>>Laki-laki</option>
+                                        <option value="P" <%= user.gender === 'P' ? 'selected' : '' %>>Perempuan</option>
+                                    </select>
+                                </div>
+                                <!-- Nomor Rekening (Readonly) -->
+                                <div class="mb-3">
+                                    <label for="no_rekening" class="form-label">No Rekening</label>
+                                    <input type="text" class="form-control" id="no_rekening" name="no_rekening" value="<%= user.no_rekening %>">
+                                </div>
+                                <!-- Keterangan -->
+                                <div class="mb-3">
+                                    <label for="keterangan" class="form-label">Keterangan</label>
+                                    <textarea class="form-control" id="keterangan" name="keterangan" style="height: 200px;" required><%= user.keterangan %></textarea>
+                                </div>
+                                <!-- Tombol Simpan -->
+                                <button type="submit" class="btn app-btn-primary">Simpan Perubahan</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../layout/footer') %>

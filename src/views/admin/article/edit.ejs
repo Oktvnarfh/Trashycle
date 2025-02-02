@@ -1,0 +1,43 @@
+<%- include('../layout/header') %>
+
+<div class="app-wrapper">
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+            <h1 class="app-page-title">Edit Article</h1>
+            <hr class="mb-4">
+            <div class="row g-4 settings-section">
+                <div class="col-12 col-md-8">
+                    <div class="app-card app-card-settings shadow-sm p-4">
+                        <div class="app-card-body">
+                            <form class="settings-form" action="/admin/article/update/<%= article.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                                <input type="hidden" name="id" id="edit-id" value="<%= article.id %>">
+                                
+                                <div class="mb-3">
+                                    <label for="edit-thumbnail" class="form-label">Latar</label>
+                                    <input type="file" class="form-control" id="edit-thumbnail" name="foto">
+                                    <input type="hidden" name="old_thumbnail" id="edit-old-thumbnail" value="<%= article.foto %>">
+                                    <img src="/uploads/article/<%= article.foto %>" alt="Old thumbnail" id="old-thumbnail-preview" style="max-width: 50%; margin-top: 10px;">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="edit-author" class="form-label">Penulis</label>
+                                    <input type="text" class="form-control" id="edit-author" name="penulis" value="<%= article.penulis %>" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="edit-title" class="form-label">Judul</label>
+                                    <input type="text" class="form-control" id="edit-title" name="judul" value="<%= article.judul %>" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="edit-body" class="form-label">Isi</label>
+                                    <textarea class="form-control" id="edit-body" name="isi" style="height: 500px;"><%= article.isi %></textarea>
+                                </div>
+                                <button type="submit" class="btn app-btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../layout/footer') %>

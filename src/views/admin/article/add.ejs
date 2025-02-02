@@ -1,0 +1,37 @@
+<%- include('../layout/header') %>
+<div class="app-wrapper">
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">			    
+            <h1 class="app-page-title">Add Article</h1>
+            <hr class="mb-4">
+            <div class="row g-4 settings-section">
+                <div class="col-12 col-md-8">
+                    <div class="app-card app-card-settings shadow-sm p-4">
+                        <div class="app-card-body">
+                            <form class="settings-form" action="/admin/article/store" method="POST" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <label for="foto" class="form-label">Latar</label>
+                                    <input type="file" class="form-control" id="foto" name="foto" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="penulis" class="form-label">Penulis</label>
+                                    <input type="text" class="form-control" id="penulis" name="penulis" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="judul" class="form-label">Judul</label>
+                                    <input type="text" class="form-control" id="judul" name="judul" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="isi" class="form-label">Isi</label>
+                                    <textarea class="form-control" id="isi" name="isi" style="height: 500px;"></textarea>
+                                </div>
+                                <button type="submit" class="btn app-btn-primary" >Save Changes</button>
+                            </form>
+                        </div><!--//app-card-body-->
+                        
+                    </div><!--//app-card-->
+                </div>
+            </div><!--//row-->
+        </div><!--//container-fluid-->
+    </div><!--//app-content-->
+    <%- include('../layout/footer') %>

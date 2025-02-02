@@ -1,0 +1,41 @@
+<%- include('../layout/header') %>
+<div class="app-wrapper">
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">			    
+            <h1 class="app-page-title">Add Category</h1>
+            <hr class="mb-4">
+            <% if (messages.error) { %>
+                <div class="alert alert-danger"><%= messages.error %></div>
+            <% } %>
+            <% if (messages.success) { %>
+                <div class="alert alert-success"><%= messages.success %></div>
+            <% } %>
+            <div class="row g-4 settings-section">
+                <div class="col-12 col-md-8">
+                    <div class="app-card app-card-settings shadow-sm p-4">
+                        <div class="app-card-body">
+                            <form class="settings-form" action="/admin/category/store" method="POST">
+                                <div class="mb-3">
+                                    <label for="jenis_sampah" class="form-label">Jenis Sampah</label>
+                                    <input type="text" class="form-control" id="jenis_sampah" name="jenis_sampah" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="harga_perkilo" class="form-label">Harga Sampah (Kg)</label>
+                                    <input type="number" class="form-control" id="harga_perkilo" name="harga_perkilo" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="periode_bulan" class="form-label">Periode (Bulan)</label>
+                                    <input type="date" class="form-control" id="periode_bulan" name="periode_bulan" required>
+                                </div>
+                                <button type="submit" class="btn app-btn-primary">Save Changes</button>
+                            </form>
+                            
+                        </div><!--//app-card-body-->
+                        
+                    </div><!--//app-card-->
+                </div>
+            </div><!--//row-->
+        </div><!--//container-fluid-->
+    </div><!--//app-content-->
+</div>
+<%- include('../layout/footer') %>

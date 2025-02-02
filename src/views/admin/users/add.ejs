@@ -1,0 +1,58 @@
+<%- include('../layout/header') %>
+<div class="app-wrapper">
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+            <h1 class="app-page-title">Tambah Nasabah</h1>
+            <hr class="mb-4">
+            <% if (messages.error) { %>
+                <div class="alert alert-danger"><%= messages.error %></div>
+            <% } %>
+            <% if (messages.success) { %>
+                <div class="alert alert-success"><%= messages.success %></div>
+            <% } %>
+            <div class="row g-4 settings-section">
+                <div class="col-12 col-md-8">
+                    <div class="app-card app-card-settings shadow-sm p-4">
+                        <div class="app-card-body">
+                            <form class="settings-form" action="/admin/users/store" method="POST">
+                                <div class="mb-3">
+                                    <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
+                                    <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="gender" class="form-label">Gender</label>
+                                    <select class="form-control" id="gender" name="gender" required>
+                                        <option value="" disabled selected>Pilih Gender</option>
+                                        <option value="L">Laki-laki</option>
+                                        <option value="P">Perempuan</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="no_rekening" class="form-label">No Rekening</label>
+                                    <input type="text" class="form-control" id="no_rekening" name="no_rekening" 
+                                           value="<%= noRekening %>" readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="rt_rw" class="form-label">RT/RW</label>
+                                    <input type="text" class="form-control" id="rt_rw" name="rt_rw" placeholder="RT.RW" required>
+                                </div>
+                                <!-- <div class="mb-3">
+                                    <label for="no_rekening" class="form-label">No Rekening</label>
+                                    <input type="text" class="form-control" id="no_rekening" name="rt_rw" 
+                                           value="<%= noRekening %>" >
+                                </div> -->
+                                <div class="mb-3">
+                                    <label for="keterangan" class="form-label">Keterangan</label>
+                                    <textarea class="form-control" id="keterangan" name="keterangan" style="height: 200px;" required></textarea>
+                                </div>
+                                <!-- Tombol Simpan -->
+                                <button type="submit" class="btn app-btn-primary">Simpan</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../layout/footer') %>

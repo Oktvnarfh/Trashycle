@@ -1,0 +1,60 @@
+<%- include('../layout/header') %>
+
+<div class="app-wrapper">
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+            <h1 class="app-page-title">Edit Profil</h1>
+            <hr class="mb-4">
+            <div class="col-auto">
+                <% if (messages.error) { %>
+                  <div class="alert alert-danger bubble-notification"><%= messages.error %></div>
+                <% } %>
+                <% if (messages.success) { %>
+                  <div class="alert alert-success bubble-notification"><%= messages.success %></div>
+                <% } %>
+              </div>
+            <div class="row g-4 settings-section">
+                <div class="col-12 col-md-8">
+                    <div class="app-card app-card-settings shadow-sm p-4">
+                        <div class="app-card-body">
+                            <% if (profile) { %>
+                                <form class="settings-form" action="/admin/profile/update/<%= profile.id %>?_method=PUT" method="POST">
+                                    <input type="hidden" name="id" id="edit-id" value="<%= profile.id %>">
+                                    <div class="mb-3">
+                                        <label for="edit-name" class="form-label">Nama Bank Sampah</label>
+                                        <input type="text" class="form-control" id="edit-name" name="nama_bank_sampah" value="<%= profile.nama_bank_sampah %>" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit-lokasi" class="form-label">Lokasi</label>
+                                        <textarea name="lokasi" class="form-control" id="edit-lokasi" style="height: 100px;" required><%= profile.lokasi %></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit-telepon" class="form-label">Nomor Telepon</label>
+                                        <input type="text" name="nomor_telepon" class="form-control" id="edit-telepon" value="<%= profile.nomor_telepon %>" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit-email" class="form-label">Email</label>
+                                        <input type="email" name="email" class="form-control" id="edit-email" value="<%= profile.email %>" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit-username" class="form-label">Username</label>
+                                        <input type="text" name="username" class="form-control" id="edit-username" value="<%= profile.username %>" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit-password" class="form-label">Password</label>
+                                        <input type="password" name="password" class="form-control" id="edit-password" value="<%= profile.password %>" required>
+                                    </div>
+                                    <button type="submit" class="btn app-btn-primary">Simpan Perubahan</button>
+                                </form>
+                            <% } else { %>
+                                <p>Profil tidak ditemukan.</p>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../layout/footer') %>

@@ -1,0 +1,138 @@
+<%- include('layout/header') %>
+<div class="container py-5">
+  <div class="shadow-sm p-5 bg-light">
+    <div class="card-body">
+      <div class="col-auto">
+        <% if (messages.error) { %>
+          <div class="alert alert-danger bubble-notification"><%= messages.error %></div>
+        <% } %>
+        <% if (messages.success) { %>
+          <div class="alert alert-success bubble-notification"><%= messages.success %></div>
+        <% } %>
+      </div>
+      <h3 class="card-title mb-4">Form Transaksi</h3>
+      <form class="settings-form" action="/home/submit-form" method="POST">
+        <div id="categories-container">
+            <div class="category-group">
+                <div class="mb-3">
+                    <label for="kategori_id" class="form-label">Jenis Sampah</label>
+                    <select class="form-select" id="kategori_id" name="kategori_id[]" required>
+                        <option value="" selected disabled>Pilih Jenis Sampah</option>
+                        <% categories.forEach(category => { %>
+                            <option value="<%= category.id %>"><%= category.jenis_sampah %></option>
+                        <% }); %>
+                    </select>
+                    <div class="my-3">
+                        <label for="total_kg" class="form-label">Total (Kg)</label>
+                        <input type="number" class="form-control" name="total_kg[]" step="0.01" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <button type="button" class="btn btn-primary" id="add-category-btn">Tambah Kategori</button>
+        </div>
+        <div class="mb-3">
+          <div class="row">
+            <div class="col-12">
+                <div class="card-body">
+                  <ul class="timeline timeline-left">
+                    <li class="timeline-inverted timeline-item">
+                        <div class="timeline-badge success"><i class="bi bi-house-door"></i></div>
+                            <div class="timeline-panel">
+                              <div class="timeline-heading">
+                                 <h4 class="timeline-title"><%= user.nama_lengkap %></h4>
+                                   <p>
+                                      <small class="text-muted">Pengirim</small>
+                                  </p>
+                              </div>
+                              <div class="timeline-body">
+                                <p class="text-muted mb-0"><%= user.alamat %></p>
+                                <p class="text-muted mb-2"><%= user.no_telepon %></p>
+                                <textarea class="form-control" name="dtl_alamat" id="dtl_alamat" placeholder="Tambahkan keterangan alamat"></textarea>
+                              </div>
+                           </div>
+                    </li>
+                    <li class="timeline-inverted timeline-item">
+                        <div class="timeline-badge success"><i class="bi bi-geo-alt"></i></div>
+                        <div class="timeline-panel">
+                          <div class="timeline-heading">
+                            <h4 class="timeline-title"><%= admin.nama_bank_sampah %></h4>
+                            <p>
+                              <small class="text-muted">Penerima</small>
+                            </p>
+                          </div>
+                          <div class="timeline-body">
+                            <p class="text-muted mb-0"><%= admin.lokasi %></p>
+                            <p class="text-muted mb-0"><%= admin.nomor_telepon %></p>
+                          </div>
+                        </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="mb-3">
+          <div class="shipping-section my-3">
+            <h5>Shipping Method</h5>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="ekspedisi" id="selfPickup" value="Bawa Sendiri" 
+                <%= (typeof ekspedisi !== 'undefined' && ekspedisi === 'Bawa Sendiri') ? 'checked' : '' %> required>
+              <label class="form-check-label" for="selfPickup">Bawa Sendiri</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="ekspedisi" id="pickupService" value="Jasa Penjemputan"
+                <%= (typeof ekspedisi !== 'undefined' && ekspedisi === 'Jasa Penjemputan') ? 'checked' : '' %> required>
+              <label class="form-check-label" for="pickupService">Jasa Penjemputan</label>
+            </div>
+          </div>
+  
+          <div id="jadwal-operasional" class="my-4"></div>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="reset" class="btn btn-outline-secondary">Reset</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+    </form>
+    </div>
+  </div>
+</div>
+<%- include('layout/footer') %>
+
+<script>
+document.getElementById('add-category-btn').addEventListener('click', function() {
+    const container = document.getElementById('categories-container');
+    const newCategoryGroup = document.createElement('div');
+    newCategoryGroup.classList.add('category-group');
+    newCategoryGroup.innerHTML = `
+    <div class="mb-3">
+        <label for="kategori_id" class="form-label">Jenis Sampah</label>
+        <select class="form-select" name="kategori_id[]" required>
+            <option value="" selected disabled>Pilih Jenis Sampah</option>
+            <% categories.forEach(category => { %>
+                <option value="<%= category.id %>"><%= category.jenis_sampah %></option>
+            <% }); %>
+        </select>
+         <div class="my-3">
+            <label for="total_kg" class="form-label">Total (Kg)</label>
+            <input type="number" class="form-control" name="total_kg[]" step="0.01" required>
+        </div>
+    </div>
+    `;
+    container.appendChild(newCategoryGroup);
+});
+
+// Handle perubahan ekspedisi untuk menampilkan jadwal operasional
+document.querySelectorAll('input[name="ekspedisi"]').forEach((input) => {
+    input.addEventListener('change', function() {
+        const ekspedisi = this.value;
+        const jadwalDiv = document.getElementById('jadwal-operasional');
+
+        if (ekspedisi === 'Bawa Sendiri') {
+            jadwalDiv.innerHTML = '<p>Jadwal Operasional: Senin - Minggu (08:00 - 16:00)</p>';
+        } else if (ekspedisi === 'Jasa Penjemputan') {
+            jadwalDiv.innerHTML = '<p>Jadwal Penjemputan: Sabtu - Minggu (08:00 - 16:00)</p>';
+        }
+    });
+});
+</script>
