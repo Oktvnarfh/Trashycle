@@ -140,11 +140,6 @@ homeController.registerSubmit = (req, res) => {
       return res.redirect('/home/register');
     }
 
-    if (password !== confirm_password) {
-        req.flash('error', 'Password dan Konfirmasi Password tidak cocok.');
-        return res.redirect('/home/register');
-    }
-
     // Cek username sudah digunakan atau belum
     Users.getByCondition({ username }, (err, results) => {
         if (err) {
@@ -182,8 +177,8 @@ homeController.registerSubmit = (req, res) => {
                     gender,
                     username,
                     password: hashedPassword,
-                    alamat: address,
-                    no_telepon: phone,
+                    alamat: alamat,
+                    no_telepon: no_telepon,
                     no_rekening: noRekening,
                     keterangan: 'Aktif', // Keterangan diatur otomatis ke 'Aktif'
                 };
